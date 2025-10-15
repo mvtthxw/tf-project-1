@@ -9,7 +9,6 @@ resource "aws_vpc" "main" {
   tags = {
     Username = ""
     Name     = "${var.username}-vpc"
-    Repo     = "${var.repo}"
   }
 }
 
@@ -19,7 +18,6 @@ resource "aws_internet_gateway" "main" {
 
   tags = {
     Name = "${var.username}-igw"
-    Repo = "${var.repo}"
   }
 }
 
@@ -33,7 +31,6 @@ resource "aws_subnet" "public" {
 
   tags = {
     Name = "${var.username}-${element(data.aws_availability_zones.available.names, count.index)}-public-subnet"
-    Repo = "${var.repo}"
   }
 }
 
@@ -46,7 +43,6 @@ resource "aws_subnet" "private" {
 
   tags = {
     Name = "${var.username}-${element(data.aws_availability_zones.available.names, count.index)}-private-subnet"
-    Repo = "${var.repo}"
   }
 }
 
@@ -61,7 +57,6 @@ resource "aws_route_table" "public" {
 
   tags = {
     Name = "${var.username}-public-rt"
-    Repo = "${var.repo}"
   }
 }
 
@@ -76,7 +71,6 @@ resource "aws_eip" "nat" {
   count = 1
   tags = {
     Name = "${var.username}-nat-eip"
-    Repo = "${var.repo}"
   }
 }
 
@@ -86,7 +80,6 @@ resource "aws_nat_gateway" "main" {
 
   tags = {
     Name = "${var.username}-nat"
-    Repo = "${var.repo}"
   }
 }
 
@@ -101,7 +94,6 @@ resource "aws_route_table" "private" {
 
   tags = {
     Name = "${var.username}-private-rt"
-    Repo = "${var.repo}"
   }
 }
 

@@ -22,11 +22,36 @@ variable "az_count" {
   description = "The number of Availability Zones to use"
 }
 
-# variable "instance_type" {}
-# variable "key_name" {}
-# variable "desired_capacity" {}
-# variable "min_capacity" {}
-# variable "max_capacity" {}
+# ECS Cluster
+variable "cluster_name" {
+  type        = string
+  description = "The name of the ECS cluster"
+}
+
+variable "instance_type" {
+  type        = string
+  description = "The EC2 instance type for the ECS cluster"
+}
+
+variable "key_name" {
+  type        = string
+  description = "The name of the key pair to use for EC2 instances"
+}
+
+variable "desired_capacity" {
+  type        = number
+  description = "Desired number of instances in the ECS cluster"
+}
+
+variable "min_capacity" {
+  type        = number
+  description = "Min number of instances in the ECS cluster"
+}
+
+variable "max_capacity" {
+  type        = number
+  description = "Max number of instances in the ECS cluster"
+}
 
 # variable "alb_listener_port" {}
 
