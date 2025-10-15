@@ -77,3 +77,16 @@ output "nlb_security_group" {
 output "nlb_listener_arn" {
   value = aws_lb_listener.nlb_listener.arn
 }
+
+# App
+output "ecs_task_definition" {
+  value = aws_ecs_task_definition.ecs_task.arn
+}
+
+output "ecs_service" {
+  value = aws_ecs_service.ecs_service.name
+}
+
+output "ecs_service_desired_count" {
+  value = aws_ecs_service.ecs_service.desired_count
+}

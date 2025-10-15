@@ -10,3 +10,7 @@ data "aws_ami" "amazon_linux_2" {
     values = ["amzn2-ami-ecs-*-x86_64-ebs"]
   }
 }
+
+data "aws_iam_role" "task_role" {
+  name = var.task_execution_role_name
+}

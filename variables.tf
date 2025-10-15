@@ -59,8 +59,28 @@ variable "alb_listener_port" {
   description = "The port for the ALB listener"
 }
 
-# variable "container_image" {}
-# variable "task_execution_role_name" {}
-# variable "app_desired_capacity" {}
-# variable "app_min_capacity" {}
-# variable "app_max_capacity" {}
+# App
+variable "container_image" {
+  type        = string
+  description = "The container image to deploy in the ECS task"
+}
+
+variable "task_execution_role_name" {
+  type        = string
+  description = "The name of the IAM role for ECS task execution"
+}
+
+variable "app_desired_capacity" {
+  type        = number
+  description = "Desired number of tasks in the ECS service"
+}
+
+variable "app_min_capacity" {
+  type        = number
+  description = "Min number of tasks in the ECS service"
+}
+
+variable "app_max_capacity" {
+  type        = number
+  description = "Max number of tasks in the ECS service"
+}
