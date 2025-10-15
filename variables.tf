@@ -53,7 +53,11 @@ variable "max_capacity" {
   description = "Max number of instances in the ECS cluster"
 }
 
-# variable "alb_listener_port" {}
+# LB
+variable "alb_listener_port" {
+  type        = number
+  description = "The port for the ALB listener"
+}
 
 # variable "container_image" {}
 # variable "task_execution_role_name" {}

@@ -1,36 +1,36 @@
 #Cloudwatch metrics 
 resource "aws_cloudwatch_metric_alarm" "ecs_memory_reservation_high" {
-  alarm_name                = "${var.cluster_name}-memory-reservation-high"
-  comparison_operator       = "GreaterThanOrEqualToThreshold"
-  evaluation_periods        = "1"
-  metric_name               = "MemoryReservation"
-  namespace                 = "AWS/ECS"
-  period                    = "300"
-  statistic                 = "Average"
-  threshold                 = "50"
+  alarm_name          = "${var.cluster_name}-memory-reservation-high"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "MemoryReservation"
+  namespace           = "AWS/ECS"
+  period              = "300"
+  statistic           = "Average"
+  threshold           = "50"
   dimensions = {
     ClusterName = aws_ecs_cluster.ecs_cluster.name
   }
 
-  alarm_actions             = [aws_autoscaling_policy.scale_out_memory_policy.arn]
-  ok_actions                = []
+  alarm_actions = [aws_autoscaling_policy.scale_out_memory_policy.arn]
+  ok_actions    = []
 }
 
 resource "aws_cloudwatch_metric_alarm" "ecs_memory_reservation_low" {
-  alarm_name                = "${var.cluster_name}-memory-reservation-low"
-  comparison_operator       = "LessThanOrEqualToThreshold"
-  evaluation_periods        = "1"
-  metric_name               = "MemoryReservation"
-  namespace                 = "AWS/ECS"
-  period                    = "300"
-  statistic                 = "Average"
-  threshold                 = "30"
+  alarm_name          = "${var.cluster_name}-memory-reservation-low"
+  comparison_operator = "LessThanOrEqualToThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "MemoryReservation"
+  namespace           = "AWS/ECS"
+  period              = "300"
+  statistic           = "Average"
+  threshold           = "30"
   dimensions = {
     ClusterName = aws_ecs_cluster.ecs_cluster.name
   }
 
-  alarm_actions             = [aws_autoscaling_policy.scale_in_memory_policy.arn]
-  ok_actions                = []
+  alarm_actions = [aws_autoscaling_policy.scale_in_memory_policy.arn]
+  ok_actions    = []
 }
 #Simple scaling
 resource "aws_autoscaling_policy" "scale_out_memory_policy" {
