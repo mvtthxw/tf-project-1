@@ -1,7 +1,7 @@
 # Create a WAFv2 Web ACL
 resource "aws_wafv2_web_acl" "waf" {
-  name        = "${var.username}-${var.repo}-web-acl"
-  scope       = "REGIONAL"
+  name  = "${var.username}-${var.repo}-web-acl"
+  scope = "REGIONAL"
   default_action {
     allow {}
   }
@@ -74,11 +74,11 @@ resource "aws_wafv2_web_acl" "waf" {
 
 #IP Set
 resource "aws_wafv2_ip_set" "ip_set" {
-  name        = "${var.username}-${var.repo}-ip-set"
-  scope       = "REGIONAL"
-  description = "IP set"
+  name               = "${var.username}-${var.repo}-ip-set"
+  scope              = "REGIONAL"
+  description        = "IP set"
   ip_address_version = "IPV4"
-  addresses = ["99.1.1.1/32"]
+  addresses          = var.waf_block_ip
 }
 
 #Associate WAF and LB

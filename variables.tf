@@ -84,3 +84,19 @@ variable "app_max_capacity" {
   type        = number
   description = "Max number of tasks in the ECS service"
 }
+
+# Security
+variable "ingress_deny_cidr" {
+  type        = string
+  description = "The CIDR block to deny ingress traffic from"
+}
+
+variable "egress_deny_cidr" {
+  type        = string
+  description = "The CIDR block to deny egress traffic to"
+}
+
+variable "waf_block_ip" {
+  type        = list(string)
+  description = "The IP address to block in the WAF"
+}
